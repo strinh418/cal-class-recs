@@ -5,7 +5,7 @@ from collections import Counter
 
 
 sw = stopwords.words('english')
-other_words = ['professor', 'computer', 'science', 'berkeley', 'hes', 'im',]
+other_words = ['professor', 'computer', 'science', 'berkeley', 'hes', 'im', 'class', 'take', 'classes']
 sw.extend(other_words)
 
 
