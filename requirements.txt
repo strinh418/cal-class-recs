@@ -1,1 +1,3 @@
 praw
+vaderSentiment
+python-dotenv
