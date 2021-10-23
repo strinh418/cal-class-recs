@@ -1,3 +1,4 @@
 praw
 vaderSentiment
 python-dotenv
+nltk
