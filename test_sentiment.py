@@ -19,6 +19,7 @@ rmp_quotes = [
 ]
 
 def rate_list(lst):
+    "Rates everything in a list."
     for q in lst:
         print(f'Quote: {q}')
         rating = sa.polarity_scores(q)['compound']
@@ -26,5 +27,29 @@ def rate_list(lst):
         print('\n')
     print('\n\n')
 
-rate_list(reddit_quotes)
-rate_list(rmp_quotes)
+def overall_rating(lst, kw):
+    "Finds the average rating of everything in the list."
+    counter = 0
+    rating = 0
+    for q in lst:
+        rating += sa.polarity_scores(q)['compound']
+        counter += 1
+    print(f'OVERALL RATING FOR {kw}: {rating/counter}')
+
+def highest_lowest(lst):
+    "Prints the highest and lowest items in the list."
+    ratings = []
+    for q in lst:
+        rating = sa.polarity_scores(q)['compound']
+        ratings.append((q, rating))
+    positive = max(ratings, key=lambda t: t[1])
+    negative = min(ratings, key=lambda t: t[1])
+    print(f'Most positive comment: {positive[0]}')
+    print(f'Rating: {positive[1]}')
+    print(f'Most negative comment: {negative[0]}')
+    print(f'Rating: {negative[1]}')
+
+# rate_list(reddit_quotes)
+# rate_list(rmp_quotes)
+highest_lowest(reddit_quotes+rmp_quotes)
+overall_rating(reddit_quotes+rmp_quotes, 'CS170')
